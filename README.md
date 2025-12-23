@@ -59,3 +59,6 @@ and outputs are suitable for downstream decision systems.
 
 ## Conclusion
 This project implements a production-oriented credit risk modeling pipeline, progressing from interpretable linear baselines to non-linear ensemble methods. Gradient Boosting significantly improves ranking performance, while isotonic calibration corrects probability misalignment without affecting ROC-AUC. SHAP-based global and local explanations provide faithful feature attributions, ensuring model transparency. The calibrated model is deployed via FastAPI, enabling consistent, validated probability outputs suitable for integration into downstream financial decision systems.
+
+> [!NOTE]
+> Models are not committed. Train using notebook 02 or download from [here](https://drive.google.com/drive/folders/1V6ck4YbjVsdDYagZ5wbKSnqyUh1lyOn7?usp=sharing).

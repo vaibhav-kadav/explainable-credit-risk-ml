@@ -13,7 +13,7 @@ for a customer based on demographic and financial attributes.
 ### Approach
 - Feature engg based on payment behaviour and credit usage
 - Baseline model: Logistic Regression(interpretable, low variance)
-- Non linear model: Gradient Boosting
+- Non linear model: Gradient Boosting to capture non linear interactions
 - Probability calibration using isotonic regression
 - Explainability using SHAP(global + local explanations)
 
@@ -21,9 +21,9 @@ for a customer based on demographic and financial attributes.
 - Python3 (Core implementation)
 - Pandas, Numpy (Data manpulation)
 - Matplotlib, Seaborn (Visualization)
-- Scikit learn (Models)
-- SHAP (Shapely Additive Explanations)
-- FastAPI (To use the ML model as API)
+- Scikit learn (Modelling and evaluation)
+- SHAP (Explainability)
+- FastAPI (Model deployment as API)
 
 This is formulated as a binary classification problem where the model outputs
 a calibrated probability of default, not just a class label.
@@ -36,6 +36,9 @@ Models used - 1. Logistic Regression, Gradient boosting0.7827557529981515
 | Gradient Boosting   | 0.7824828162748017    | Poor        | Medium           |
 | Calibrated GB       | 0.7827557529981515    | Good        | Medium           |
 
+* Gradient Boosting improves ranking performance, while calibration significantly improves
+* the reliability of predicted probabilities without affecting ROC-AUC.
+
 ### Explainability
 - SHAP is used to explain feature contributions
 - Key drivers - recent payment delays, credit utilization
@@ -44,6 +47,7 @@ Models used - 1. Logistic Regression, Gradient boosting0.7827557529981515
 ### Deployment
 - Model served via FastAPI
 - /predit endpoint returns calibrated default probability and risk label
+- Interactive API documentation via Swagger(/docs)
 
 ### How to Run
 - pip3 install -r requirements.txt (or pip install -r requirements.txt)
@@ -53,3 +57,5 @@ The model is exposed via a FastAPI service that returns calibrated default proba
 Input validation ensures consistency with training features, 
 and outputs are suitable for downstream decision systems.
 
+## Conclusion
+- This project implements a production-oriented credit risk modeling pipeline, progressing from interpretable linear baselines to non-linear ensemble methods. Gradient Boosting significantly improves ranking performance, while isotonic calibration corrects probability misalignment without affecting ROC-AUC. SHAP-based global and local explanations provide faithful feature attributions, ensuring model transparency. The calibrated model is deployed via FastAPI, enabling consistent, validated probability outputs suitable for integration into downstream financial decision systems.
